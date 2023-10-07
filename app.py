@@ -1,4 +1,6 @@
+import sys
 from tkinter import *
+import os
 import socket,threading
 PORT=4444 #Default(If you want to use custom port,change in server.py also)
 class App:
@@ -72,7 +74,8 @@ class App:
         except Exception as e:
             this.show_error(this.canvas,this.i,str(e))
     def assets(this,path:str):
-        return f"./assets/{path}"
+        base=os.path.dirname(os.path.abspath(sys.argv[0]))
+        return f"{base}\\assets\\{path}"
     def show_error(this,c,i,msg:str,fill="#F10909"):
         return  c.itemconfig(i,
                     text=msg,
